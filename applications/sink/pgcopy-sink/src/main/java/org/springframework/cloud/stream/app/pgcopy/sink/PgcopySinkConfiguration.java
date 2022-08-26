@@ -21,9 +21,9 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Collections;
 
-import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
+import jakarta.annotation.PreDestroy;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.postgresql.copy.CopyIn;
