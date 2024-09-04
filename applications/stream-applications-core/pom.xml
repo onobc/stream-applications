@@ -156,25 +156,17 @@
                                     <!-- Wavefront Tracing -->
                                     <wavefront.application.name>"${spring.cloud.dataflow.stream.name:unknown}</wavefront.application.name>
                                     <wavefront.application.service>${spring.cloud.dataflow.stream.app.label:unknown}-${spring.cloud.dataflow.stream.app.type:unknown}"</wavefront.application.service>
-                                    <!-- Zipkin Tracing -->
+                                    <!-- Disable Tracing and all Tracing exporters -->
                                     <management.tracing.enabled>false</management.tracing.enabled>
                                     <management.tracing.sampling.probability>1.0</management.tracing.sampling.probability>
+                                    <management.zipkin.tracing.export.enabled>false</management.zipkin.tracing.export.enabled>
+                                    <management.wavefront.tracing.export.enabled>false</management.wavefront.tracing.export.enabled>
                                 </properties>
                                 <metadata>
                                     <mavenPluginVersion>${spring-cloud-dataflow-apps-metadata-plugin.version}</mavenPluginVersion>
                                 </metadata>
                                 <maven>
                                     <dependencyManagement>
-                                        <dependency>
-                                            <groupId>io.micrometer.prometheus</groupId>
-                                            <artifactId>prometheus-rsocket-spring</artifactId>
-                                            <version>${prometheus-rsocket.version}</version>
-                                        </dependency>
-                                        <dependency>
-                                            <groupId>io.micrometer.prometheus</groupId>
-                                            <artifactId>prometheus-rsocket-client</artifactId>
-                                            <version>${prometheus-rsocket.version}</version>
-                                        </dependency>
                                         <!-- Temporarily override SC-Fn dependency by giving it the highest precedence since 2020.0.5 release of spring-cloud will not take place until December -->
                                         <dependency>
                                             <groupId>org.springframework.cloud</groupId>
@@ -228,10 +220,7 @@
                                         <dependency>
                                             <groupId>io.micrometer.prometheus</groupId>
                                             <artifactId>prometheus-rsocket-spring</artifactId>
-                                        </dependency>
-                                        <dependency>
-                                            <groupId>io.micrometer.prometheus</groupId>
-                                            <artifactId>prometheus-rsocket-client</artifactId>
+                                            <version>${prometheus-rsocket.version}</version>
                                         </dependency>
                                         <dependency>
                                             <groupId>io.micrometer</groupId>
